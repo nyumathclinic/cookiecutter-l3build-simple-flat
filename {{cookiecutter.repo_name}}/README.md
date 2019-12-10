@@ -1,3 +1,4 @@
+{%- set year, month, day = cookiecutter.date.split('-') -%}
 # {{ cookiecutter.module_name }}
 
 {{ cookiecutter.module_description }}
@@ -55,7 +56,7 @@ anwhere from the command line.
 
 ## License
 
-Copyright (C) 2019 by {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>.
+Copyright (C) {{ year }} by {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>.
 
 {% if cookiecutter.license == "LPPL" -%}
 

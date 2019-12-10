@@ -1,5 +1,5 @@
 -- Build configuration for {{cookiecutter.module_name}}
--- {{cookiecutter.author_name}}, 2019-05-29
+-- {{cookiecutter.author_name}}, {{ cookiecutter.date }}
 
 module = "{{cookiecutter.module_name}}"
 

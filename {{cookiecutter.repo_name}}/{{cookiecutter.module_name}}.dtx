@@ -5,7 +5,8 @@
 %</driver>
 %<pkg>\ProvidesPackage{{'{'}}{{ cookiecutter.module_name }}{{'}'}}
 %<*pkg>
-  [2017/12/11 v0.1 {{ cookiecutter.module_description }}]
+{%- set year, month, day = cookiecutter.date.split('-') %}
+  [{{ year }}/{{ month }}/{{ day }} v0.0 {{ cookiecutter.module_description }}]
 %</pkg>
 %<*driver>
 \documentclass{ltxdoc}

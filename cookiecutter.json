@@ -4,5 +4,6 @@
     "author_name" : "You",
     "author_email" : "you@domain.com",
     "module_description" : "description text",
+    "date" : "2001-01-01",
     "license" : [ "LPPL", "MIT" ]
 }
