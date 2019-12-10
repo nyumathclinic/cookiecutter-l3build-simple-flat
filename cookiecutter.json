@@ -1,0 +1,7 @@
+{
+    "module_name" : "demopkg",
+    "repo_name" : "latex-demopkg",
+    "author_name" : "You",
+    "author_email" : "you@domain.com",
+    "module_description" : "description text"
+}
