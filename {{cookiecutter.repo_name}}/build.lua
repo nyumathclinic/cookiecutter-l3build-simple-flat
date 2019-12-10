@@ -3,7 +3,7 @@
 
 module = "{{cookiecutter.module_name}}"
 
-unpackfiles = {"*.dtx"}
+typesetfiles = {"*.tex"}
 
 
 -- The "luatex" engine produces some very minor differences (like, a single
