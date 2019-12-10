@@ -1,5 +1,64 @@
 \input docstrip.tex
 \keepsilent
 \askforoverwritefalse
+\preamble
+----------------------------------------------------------------
+{{ cookiecutter.module_name }} --- {{ cookiecutter.module_description }}
+by {{ cookiecutter.author_name }} <{{ cookiecutter.author_email }}>
+
+{%- if cookiecutter.license == "LPPL" %}
+
+Released under the LaTeX Project Public License v1.3c or later
+See https://www.latex-project.org/lppl.txt
+
+{%- elif cookiecutter.license == "MIT" %}
+
+Released under the MIT License
+See https://opensource.org/licenses/MIT
+{% endif %}
+----------------------------------------------------------------
+\endpreamble
+\postamble
+Copyright 2019 {{ cookiecutter.author_name }}
+
+{% if cookiecutter.license == "LPPL" -%}
+
+This work may be distributed and/or modified under the
+conditions of the LaTeX Project Public License (LPPL), either
+version 1.3c of this license or (at your option) any later
+version.  The latest version of this license is in the file:
+
+https://www.latex-project.org/lppl.txt
+
+This work is "maintained" (as per LPPL maintenance status) by
+You.
+
+{% elif cookiecutter.license == "MIT" -%}
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+{%- endif -%}
+
+This work consists of the files {{ cookiecutter.module_name }}.dtx
+                            and {{ cookiecutter.module_name }}.ins,
+and the derived files           {{ cookiecutter.module_name }}.sty,
+                                {{ cookiecutter.module_name }}.pdf,
+                            and {{ cookiecutter.module_name }}-code.pdf.
+\endpostamble
 \generate{\file{\jobname.sty}{\from{\jobname.dtx}{pkg}}}
 \endbatchfile

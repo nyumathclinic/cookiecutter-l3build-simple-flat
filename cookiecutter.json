@@ -3,5 +3,6 @@
     "repo_name" : "latex-demopkg",
     "author_name" : "You",
     "author_email" : "you@domain.com",
-    "module_description" : "description text"
+    "module_description" : "description text",
+    "license" : [ "LPPL", "MIT" ]
 }
