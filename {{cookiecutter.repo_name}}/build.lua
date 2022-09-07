@@ -20,16 +20,38 @@ typesetfiles = {"*.tex"}
 -- This creates both "test.tlg" and "test.luatex.ltg" in testfiles.
 -- Engine-specific tlg files are only compared with the specific engines.
 
+-- capture the output from a shell command
+-- Thanks Norman Ramsey https://stackoverflow.com/a/326715/297797
+-- there is also the shell() function from l3build-upload.lua
+-- it doesn't trim leading/training whitespace.
+function os.capture(cmd, raw)
+    local f = assert(io.popen(cmd, 'r'))
+    local s = assert(f:read('*a'))
+    f:close()
+    if raw then return s end
+    s = string.gsub(s, '^%s+', '')
+    s = string.gsub(s, '%s+$', '')
+    s = string.gsub(s, '[\n\r]+', ' ')
+    return s
+end
+
+--decorator to only run if repo is clean
+function only_if_clean(f)
+    return function(x)
+        if os.capture("git status --porcelain") ~= "" then
+            print("Error: Repository is dirty.  Aborted.")
+            os.exit(1)
+        else
+            print("Repository is clean")
+            return f(x)
+        end
+    end 
+end
+
+-- tag = only_if_clean(tag)
+target_list.tag.pre = only_if_clean(target_list.tag.pre)
 
 function update_tag(file,content,tagname,tagdate)
-    -- This should go in a pre-tag hook, but there isn't one.
-    -- ensure that the tagname matches `v`x.y.z
-    assert(string.match(tagname,"^v%d+%.%d+%.%d+$"),
-        "invalid tag name. Use a literal v, then a semantic version number.")
-    -- Make sure the working directory is "clean".
-    -- See https://unix.stackexchange.com/a/394674/62853
-    assert(os.execute("git diff-index --quiet HEAD") == 0,
-        "Working directory dirty.  Commit changes and try again.")
     -- TeX dates are in yyyy/mm/dd format.  tagdate is in yyyy-mm-dd format.
     tagdate_tex = string.gsub(tagdate,'-','/')
     if string.match(file, "%.dtx$") then
